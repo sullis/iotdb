@@ -74,4 +74,4 @@ jobs:
           -D branch=$BRANCH_NAME \
           -D pullRequest=$PR_NUMBER \
           -D repoToken=MiEOlMMMNQhLNV4yayn7rRUPyVSQzbzbZ \
-          -pl tsfile,jdbc,server,cli,session,hive-connector,flink-iotdb-connector,flink-tsfile-connector
+          -pl server,cli,session,hive-connector,flink-iotdb-connector,flink-tsfile-connector
