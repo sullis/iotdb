@@ -8,6 +8,7 @@ on:
     branches: 
       - master
       - 'rel/*'
+      - try_coverall
     paths-ignore:
       - 'docs/**'
   pull_request:
@@ -64,7 +65,7 @@ jobs:
           key: code-coverage-${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Run Integration Test
-        run: mvn -B post-integration-test -Pcode-coverage -Pcoveralls -pl tsfile,server -am
+        run: mvn -B post-integration-test -Pcode-coverage -Pcoveralls -pl server -am
       - name: Code Coverage (Coveralls) Test
         run: |
           mvn -B coveralls:report \
@@ -73,4 +74,4 @@ jobs:
           -D branch=$BRANCH_NAME \
           -D pullRequest=$PR_NUMBER \
           -D repoToken=MiEOlMMMNQhLNV4yayn7rRUPyVSQzbzbZ \
-          -pl tsfile,server
+          -pl server,tsfile
