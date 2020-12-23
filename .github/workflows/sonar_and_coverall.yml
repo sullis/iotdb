@@ -64,7 +64,7 @@ jobs:
           key: code-coverage-${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Run Integration Test
-        run: mvn -B post-integration-test -Pcode-coverage -Pcoveralls -pl '!distribution' -am
+        run: mvn -B post-integration-test -Pcode-coverage -Pcoveralls -pl tsfile,server -am
       - name: Code Coverage (Coveralls) Test
         run: |
           mvn -B coveralls:report \
@@ -73,4 +73,4 @@ jobs:
           -D branch=$BRANCH_NAME \
           -D pullRequest=$PR_NUMBER \
           -D repoToken=MiEOlMMMNQhLNV4yayn7rRUPyVSQzbzbZ \
-          -pl '!distribution' -am
+          -pl tsfile,server
